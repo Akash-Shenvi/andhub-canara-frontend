@@ -33,10 +33,10 @@ const AllMaterialTypes = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout>
         <div className="h-screen w-screen"> 
+    <Layout>
 
-      <div className="min-h-screen bg-gray-900 text-white p-6">
+      <div className="">
         <h1 className="text-3xl font-bold text-orange-400 mb-6">Available Material Categories</h1>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -52,8 +52,8 @@ const AllMaterialTypes = () => {
           ))}
         </div>
       </div>
-          </div>
     </Layout>
+          </div>
   );
 };
 

@@ -9,7 +9,8 @@ function Layout({ children }) {
     <div className="layout-wrapper min-h-screen w-full flex flex-col bg-gradient-to-b from-black via-gray-900 to-black text-white">
 
       {/* Header */}
-      <header className="layout-header bg-black text-white py-4 px-6 flex justify-between items-center shadow-md fixed top-0 left-0 w-full z-50">
+      {/* FIX: Removed 'fixed', 'top-0', 'left-0', 'w-full', and 'z-50' classes to make the header scroll with the page. */}
+      <header className="layout-header bg-black text-white py-4 px-6 flex justify-between items-center shadow-md">
         <div className="text-2xl font-bold tracking-wide">MyDashboard</div>
         <nav>
           <ul className="layout-nav hidden md:flex space-x-6">
@@ -64,7 +65,8 @@ function Layout({ children }) {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 px-6 py-8 md:px-7 md:py-16 pt-20">
+      {/* FIX: Removed 'pt-20' as the header is no longer fixed, so the extra top padding is not needed. */}
+      <main className="flex-1 px-6 py-8 md:px-7 md:py-16">
         {children}
       </main>
 
