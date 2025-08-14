@@ -133,8 +133,9 @@ const UserProfile = () => {
   }
 
   return (
+    <div className="h-screen w-screen">
     <Layout>
-      <div className="h-screen w-screen bg-gray-900 text-white flex items-center justify-center px-4 py-10">
+      <div className=" bg-gray-900 text-white flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-3xl bg-gray-800 p-8 rounded-2xl shadow-2xl">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-orange-400">Profile Settings</h2>
@@ -226,6 +227,7 @@ const UserProfile = () => {
         </div>
       </div>
     </Layout>
+    </div>
   );
 };
 
