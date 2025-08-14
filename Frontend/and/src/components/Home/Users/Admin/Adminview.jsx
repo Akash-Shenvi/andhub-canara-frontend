@@ -27,10 +27,10 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <Layout>
       <div className="h-screen w-screen">
+    <Layout>
 
-      <div className="min-h-screen bg-gray-900 text-white p-6">
+      <div className="">
         <h1 className="text-3xl font-bold text-orange-400 mb-6">
           Admin Dashboard
         </h1>
@@ -48,8 +48,8 @@ const AdminDashboard = () => {
           ))}
         </div>
       </div>
-              </div>
     </Layout>
+              </div>
   );
 };
 

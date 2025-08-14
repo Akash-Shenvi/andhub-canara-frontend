@@ -95,8 +95,8 @@ const AdminUserTable = () => {
   };
 
   return (
-    <Layout>
       <div className="h-screen w-screen">
+    <Layout>
         {/* Popup */}
         {showPopup && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -139,7 +139,7 @@ const AdminUserTable = () => {
         )}
 
         {/* Content */}
-        <div className="p-4 bg-gray-900 text-white min-h-screen">
+        <div className="">
           <h1 className="text-2xl text-orange-400 font-bold mb-4">
             User Management
           </h1>
@@ -251,8 +251,8 @@ const AdminUserTable = () => {
             </table>
           </div>
         </div>
-      </div>
     </Layout>
+      </div>
   );
 };
 

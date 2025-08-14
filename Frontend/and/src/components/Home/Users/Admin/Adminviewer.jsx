@@ -120,8 +120,8 @@ const AdminMaterialView = () => {
   );
 
   return (
-    <Layout>
       <div className="h-screen w-screen">
+    <Layout>
         {showPopup && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="relative bg-white text-black w-[90%] max-w-lg p-6 rounded-2xl shadow-2xl">
@@ -162,7 +162,7 @@ const AdminMaterialView = () => {
           </div>
         )}
 
-        <div className="p-6 bg-gray-900 min-h-screen text-white">
+        <div className="">
           <h1 className="text-2xl font-bold text-orange-400 mb-4">Admin Material Viewer</h1>
 
           <div className="flex flex-wrap gap-4 mb-4">
@@ -319,8 +319,8 @@ const AdminMaterialView = () => {
             </table>
           </div>
         </div>
-      </div>
     </Layout>
+      </div>
   );
 };
 
