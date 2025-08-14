@@ -128,12 +128,11 @@ export default function SemesterPage() {
   });
 
   return (
-      <div className="h-screen w-screen">
-    <Layout>
+      <div className="h-screen w-screen bg-gray-900 overflow-y-auto">
+  <Layout>
+    <div className=" flex flex-col items-center w-full">
 
-      <div className="p-8 bg-gray-900 flex flex-col items-center flex-1 w-full">
-
-        <h1 className="text-orange-400 text-2xl font-bold mb-4">Select Your Semester & Branch</h1>
+        <h1 className="p-8 text-orange-400 text-2xl font-bold mb-4">Select Your Semester & Branch</h1>
 
         {/* Semester & Branch Dropdown */}
         <div className="flex flex-col sm:flex-row gap-4 mb-4">
