@@ -1,0 +1,271 @@
+/* Import Google Fonts for Better Typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Raleway';
+    overflow-x: hidden;
+    background-color: #000;
+    color: #FFFBF2;
+    /* Default text color for dark theme */
+    line-height: 1.6;
+    text-align: center;
+    
+}
+
+/* Forgot Password Container */
+.forgotpass-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Video */
+/* Background Video */
+.background-video {
+    position: fixed;
+    /* Make it fixed so it covers the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Full width of the viewport */
+    height: 100vh;
+    /* Full height of the viewport */
+    object-fit: cover;
+    /* Ensure the video covers the container */
+    z-index: -1;
+    /* Send it behind the content */
+    filter: brightness(0.7);
+    /* Darken video for better contrast */
+    transition: filter 0.5s ease;
+}
+
+.background-video:hover {
+    filter: brightness(0.6);
+}
+
+/* Content Container */
+.forgotpass-content {
+    background: #002244;
+    /* Semi-transparent overlay for readability */
+    padding: 60px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 95%;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ff8c00;
+    
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideInDown 1s ease-out;
+}
+
+/* Paragraph Text */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #FFFBF2;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Input Field Styling */
+.input-field {
+    width: 100%;
+    max-width: 500px;
+    padding: 16px 29px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: 2px solid #ff8c00;
+    /* Orange border */
+    border-radius: 30px;
+    font-size: 1rem;
+    color: #ff8c00;
+    /* Orange text */
+    background-color: #002244;
+    /* Semi-transparent background for dark theme */
+    backdrop-filter: blur(5px);
+    /* Frosted glass effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.input-field:focus {
+    outline: none;
+    
+    border-color: #e77b00;
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+    
+}
+
+/* Placeholder Styling */
+.input-field::placeholder {
+    color: #FFFBF2;
+    /* Light placeholder text */
+    opacity: 0.8;
+    font-style: italic;
+}
+.forh1{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+
+/* Submit Button Styling */
+.submit-button {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 20px;
+    background-color: #ff8c00;
+    color: #FFFBF2;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.submit-button:hover {
+    background-color: #e77b00;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+}
+
+/* Step Containers */
+.step-1,
+.step-2,
+.step-3 {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    padding: 30px 25px;
+    background: rgba(0, 0, 0, 0.85);
+    /* Slightly darker container for steps */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease-out;
+    
+}
+
+/* Step Heading */
+.step-1 h1,
+.step-2 h1,
+.step-3 h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ff8c00;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    animation: slideInDown 1s ease-out;
+}
+
+/* Step Paragraph Text */
+.step-1 p,
+.step-2 p,
+.step-3 p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #FFFBF2;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+
+    .forgotpass-content,
+    .step-1,
+    .step-2,
+    .step-3 {
+        padding: 30px 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .submit-button,
+    .input-field {
+        max-width: 100%;
+
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+form{
+        border-radius: 20px;
+}
+.f11{
+    background-color: #1560bd;
+    
+}
+.input-field{
+    background-color: #002244;
+}
+.error-message{
+    color: red;
+    text-align: center;
+}
