@@ -44,7 +44,7 @@ const LoginPage = () => {
       const response = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
       if (response.status === 200) {
         localStorage.setItem('token', response.data.accesstoken);
-        alert(`Welcome back, ${response.data._user_id}!`);
+        alert(`Welcome back!`);
         navigate('/Dashboard');
       }
     } catch (err) {
