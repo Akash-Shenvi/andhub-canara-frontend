@@ -109,10 +109,10 @@ const LoginPage = () => {
               <form onSubmit={handleSignUp}>
                 <h1 className="hh1">Create Account</h1>
                 <span>Use your email for registration</span>
-                <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-                <input type="text" placeholder="USN" value={usn} onChange={(e) => setUsn(e.target.value)} required />
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required disabled={showOtpField}/>
+                <input type="text" placeholder="USN" value={usn} onChange={(e) => setUsn(e.target.value)} required disabled={showOtpField}/>
+                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={showOtpField} />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required disabled={showOtpField}/>
                 {showOtpField && (
                   <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value)} required />
                 )}
@@ -168,12 +168,12 @@ const LoginPage = () => {
           <form onSubmit={isSignUp ? handleSignUp : handleSignIn} className="space-y-4">
             {isSignUp && (
               <>
-                <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required />
-                <input type="text" placeholder="USN" value={usn} onChange={(e) => setUsn(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required />
+                <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required disabled={showOtpField}/>
+                <input type="text" placeholder="USN" value={usn} onChange={(e) => setUsn(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required disabled={showOtpField}/>
               </>
             )}
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required />
+            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required disabled={showOtpField}/>
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required disabled={showOtpField}/>
             {isSignUp && showOtpField && (
               <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value)} className="w-full px-4 py-3 rounded-lg bg-gray-700 text-orange border border-gray-600 focus:ring-2 focus:ring-orange-500" required />
             )}
