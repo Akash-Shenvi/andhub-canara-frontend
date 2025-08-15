@@ -92,24 +92,33 @@ export default function SemesterPage() {
     }
   };
 
-  const handleDownload = async (materialId) => {
-    if (!API_BASE_URL) return;
+  const [downloadingId, setDownloadingId] = useState(null); // track which file is downloading
 
-    try {
-      const res = await axios.get(`${API_BASE_URL}/views/download/${materialId}`);
-      const downloadUrl = res.data.downloadUrl;
+const handleDownload = async (materialId) => {
+  if (!API_BASE_URL) return;
 
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.setAttribute("download", "");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (err) {
-      alert("Download failed!");
-      console.error(err);
-    }
-  };
+  setDownloadingId(materialId); // show spinner for this material
+
+  try {
+    const res = await axios.get(`${API_BASE_URL}/views/download/${materialId}`);
+    const downloadUrl = res.data.downloadUrl;
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.setAttribute("download", "");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (err) {
+    alert("Download failed!");
+    console.error(err);
+  } finally {
+    setTimeout(() => {
+      setDownloadingId(null);
+    }, 3000); // stop spinner
+  }
+};
+
 
   const filteredSubjects = subjects.filter((subject) => {
     const query = searchQuery.toLowerCase();
@@ -256,14 +265,19 @@ export default function SemesterPage() {
 
                   <div className="mt-4">
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation(); // prevent PDF opening when clicking download
-                        handleDownload(material.id);
-                      }}
-                      className="w-full flex items-center justify-center py-2.5 px-2 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-opacity-75 transition-colors duration-300"
-                    >
-                      Download
-                    </button>
+  onClick={(e) => {
+    e.stopPropagation();
+    handleDownload(material.id);
+  }}
+  className="w-full flex items-center justify-center py-2.5 px-2 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-opacity-75 transition-colors duration-300"
+>
+  {downloadingId === material.id ? (
+    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+  ) : (
+    "Download"
+  )}
+</button>
+
                   </div>
                 </div>
               ))}
