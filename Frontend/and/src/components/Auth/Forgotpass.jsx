@@ -5,20 +5,23 @@ import { useNavigate } from 'react-router-dom';
 
 const Forgotpass = () => {
   const [step, setStep] = useState(1);
+
+  // form state
   const [email, setEmail] = useState('');
-  const [enteredOtp, setEnteredOtp] = useState('');
+  const [otp, setOtp] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  // ui state
   const [errorMessage, setErrorMessage] = useState('');
   const [API_BASE_URL, setApiBaseUrl] = useState('');
 
-  // Loading states to block buttons
   const [isSendingOtp, setIsSendingOtp] = useState(false);
-  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const [isResettingPassword, setIsResettingPassword] = useState(false);
 
   const navigate = useNavigate();
 
+  // Load API base URL
   useEffect(() => {
     const fetchBaseUrl = async () => {
       try {
@@ -32,80 +35,70 @@ const Forgotpass = () => {
     fetchBaseUrl();
   }, []);
 
-  const nextStep = () => setStep((prev) => prev + 1);
-
-  // Request OTP
-  const sendOtp = async (e) => {
+  const handleSendOtp = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-    setIsSendingOtp(true);
+    if (!email.trim()) {
+      setErrorMessage('Please enter your email.');
+      return;
+    }
 
+    setIsSendingOtp(true);
     try {
-      const response = await axios.post(
+      const { status, data } = await axios.post(
         `${API_BASE_URL}/auth/forgot-password`,
         { email },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      if (response.status === 200) {
-        console.log('OTP sent successfully:', response.data.response);
-        nextStep();
+      if (status === 200) {
+        // Move directly to the combined OTP + Reset form
+        setStep(2);
       } else {
-        setErrorMessage(response.data.response || 'Failed to send OTP.');
+        setErrorMessage(data?.response || 'Failed to send OTP.');
       }
-    } catch (error) {
-      console.error('Error sending OTP:', error.response);
-      setErrorMessage(error.response?.data?.response || 'Error sending OTP.');
+    } catch (err) {
+      console.error('Error sending OTP:', err?.response);
+      setErrorMessage(err?.response?.data?.response || 'Error sending OTP.');
     } finally {
       setIsSendingOtp(false);
     }
   };
 
-  // Verify OTP step (without resetting password yet)
-  const verifyOtp = async (e) => {
+  const handleResetPassword = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-    setIsVerifyingOtp(true);
 
-    // Just move to step 3 if OTP field is not empty
-    if (enteredOtp.trim() === '') {
-      setErrorMessage('Please enter the OTP.');
-      setIsVerifyingOtp(false);
+    if (!otp.trim()) {
+      setErrorMessage('Please enter the OTP sent to your email.');
       return;
     }
-
-    nextStep();
-    setIsVerifyingOtp(false);
-  };
-
-  // Verify OTP and reset password
-  const verifyOtpAndResetPassword = async (e) => {
-    e.preventDefault();
-    setErrorMessage('');
-
+    if (!password.trim()) {
+      setErrorMessage('Please enter a new password.');
+      return;
+    }
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match.');
       return;
     }
 
     setIsResettingPassword(true);
-
     try {
-      const response = await axios.put(
+      const { status, data } = await axios.put(
         `${API_BASE_URL}/auth/forgot-password`,
-        { email, otp: enteredOtp, password },
+        { email, otp, password },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      if (response.status === 200) {
+      if (status === 200) {
         alert('Password reset successful!');
         navigate('/participate');
       } else {
-        setErrorMessage(response.data?.response || 'Error resetting password.');
+        setErrorMessage(data?.response || 'Error resetting password.');
       }
-    } catch (error) {
-      console.error('Error verifying OTP:', error.response);
-      setErrorMessage(error.response?.data?.response || 'Error verifying OTP.');
+    } catch (err) {
+      console.error('Error resetting password:', err?.response);
+      setErrorMessage(err?.response?.data?.response || 'Error resetting password.');
     } finally {
       setIsResettingPassword(false);
     }
@@ -119,11 +112,13 @@ const Forgotpass = () => {
       </video>
 
       <div className="forgotpass-content">
+        {/* STEP 1: Enter Email -> Send OTP */}
         {step === 1 && (
           <div>
             <h1 className="forh1">Forgot Password</h1>
             <p>Please enter your email to receive an OTP.</p>
-            <form className="f11" onSubmit={sendOtp}>
+
+            <form className="f11" onSubmit={handleSendOtp}>
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -132,10 +127,11 @@ const Forgotpass = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+
               <button
                 type="submit"
                 className="submit-button"
-                disabled={isSendingOtp}
+                disabled={isSendingOtp || !email.trim()}
               >
                 {isSendingOtp ? 'Sending...' : 'Send OTP'}
               </button>
@@ -143,35 +139,22 @@ const Forgotpass = () => {
           </div>
         )}
 
+        {/* STEP 2: Enter OTP + New Password + Confirm Password -> Reset */}
         {step === 2 && (
           <div>
-            <h1>Enter OTP</h1>
-            <p>Check your email for the OTP and enter it below.</p>
-            <form onSubmit={verifyOtp}>
+            <h1 className="forh1">Reset Password</h1>
+            <p>Enter the OTP sent to <strong>{email}</strong> and your new password.</p>
+
+            <form className="f11" onSubmit={handleResetPassword}>
               <input
                 type="text"
                 placeholder="Enter OTP"
                 className="input-field"
                 required
-                value={enteredOtp}
-                onChange={(e) => setEnteredOtp(e.target.value)}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
               />
-              <button
-                type="submit"
-                className="submit-button"
-                disabled={isVerifyingOtp}
-              >
-                {isVerifyingOtp ? 'Verifying...' : 'Verify OTP'}
-              </button>
-            </form>
-          </div>
-        )}
 
-        {step === 3 && (
-          <div>
-            <h1>Reset Password</h1>
-            <p>Enter your new password below.</p>
-            <form onSubmit={verifyOtpAndResetPassword}>
               <input
                 type="password"
                 placeholder="New Password"
@@ -180,6 +163,7 @@ const Forgotpass = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+
               <input
                 type="password"
                 placeholder="Confirm Password"
@@ -188,10 +172,11 @@ const Forgotpass = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
+
               <button
                 type="submit"
                 className="submit-button"
-                disabled={isResettingPassword}
+                disabled={isResettingPassword || !otp.trim() || !password.trim() || !confirmPassword.trim()}
               >
                 {isResettingPassword ? 'Resetting...' : 'Reset Password'}
               </button>
