@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 // Data for the quick access cards to keep the JSX cleaner.
 const quickAccessLinks = [
   {
-    title: "Assignments",
-    description: "View and submit assignments with ease.",
-    link: "/assignments",
+    title: "All-Materials",
+    description: "Explore all the resources we’ve curated just for you",
+    link: "/materials",
   },
   {
     title: "Notes",

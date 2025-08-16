@@ -24,6 +24,12 @@ const AdminDashboard = () => {
       route: "/admin-uploader",
       bg: "bg-purple-600",
     },
+    {
+      title: "📊 Placement Materials",
+      description: "Upload placement-related materials.",
+      route: "/placement-upload",
+      bg: "bg-blue-600",
+    }
   ];
 
   return (

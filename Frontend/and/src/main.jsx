@@ -20,6 +20,10 @@ import Modelquestion from './components/Home/Users/Modelquestion'; // Importing 
 import PageNotFound from './components/Pagenotfound'; // Importing the PageNotFound component
 import Protected from './components/Protected';
 import CheckLogin from './components/CheckLogin'; // Importing the CheckLogin component
+import Aptitude from './components/Home/Placement/Aptitude';
+import Code from './components/Home/Placement/Code';
+import PlacementUploadPage from './components/Home/Users/Admin/PlacementAdminUploder';
+import Checkadmin from './components/Home/Users/Admin/Checkadmin'; // Importing the Checkadmin component
 const rootElement = document.getElementById('root');
 
 // Ensure `rootElement` exists before rendering
@@ -39,13 +43,16 @@ if (rootElement) {
           <Route path='/question-papers' element={<Protected><Questionpaper /></Protected>} />
           {/* <Route path='/uplode-materials' element={<Uploadmaterials />} /> */}
           {/* <Route path='/uplode-assignments' element={<Uploadassignments/>}/> */}
-          <Route path='/admin' element={<Protected><Admin /></Protected>} /> {/* Route for the admin component */}
+          <Route path='/admin' element={<Checkadmin><Admin /></Checkadmin>} /> {/* Route for the admin component */}
           {/* Admin routes */}
-          <Route path='/admin-viewer-page' element={<Protected><Adminviewer/></Protected>} />
-          <Route path='/admin-user-list-page' element={<Protected><Adminalluserlist/></Protected>} />
+          <Route path='/admin-viewer-page' element={<Checkadmin><Adminviewer/></Checkadmin>} />
+          <Route path='/admin-user-list-page' element={<Checkadmin><Adminalluserlist/></Checkadmin>} />
           <Route path='/admin-uploader' element={<Protected><Adminuploder/></Protected>} />
           <Route path='/materials' element={<Protected><Materials /></Protected>} />
           <Route path='/model-question-paper' element={<Protected><Modelquestion /></Protected>} />
+          <Route path='/aptitude' element={<Protected><Aptitude /></Protected>} />
+          <Route path='/code' element={<Protected><Code /></Protected>} />
+          <Route path='/placement-upload' element={<Checkadmin><PlacementUploadPage /></Checkadmin>} />
           {/* Add more routes as needed */}
           <Route path='*' element={<PageNotFound />} />
         </Routes>
