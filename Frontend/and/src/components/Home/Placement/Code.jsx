@@ -102,7 +102,7 @@ export default function Code() {
       <Layout>
         <div className="flex flex-col items-center w-full">
           <h1 className="p-8 text-orange-400 text-2xl font-bold mb-4">
-            Aptitude Materials
+            Coding Materials
           </h1>
 
           {/* Search Bar */}

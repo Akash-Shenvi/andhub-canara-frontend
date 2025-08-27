@@ -13,7 +13,7 @@ const UploadPage = () => {
   const [description, setDescription] = useState('');
   const [pdfFile, setPdfFile] = useState(null);
   const [showPopup, setShowPopup] = useState(true);
-
+  const [uploading, setUploading] = useState(false);
   const uploadTypes = ["Question Paper", "Question Bank", "Notes", "Model Question Paper"];
   const semesters = Array.from({ length: 8 }, (_, i) => `Semester ${i + 1}`);
 
@@ -54,6 +54,7 @@ const UploadPage = () => {
       alert("Please fill in all fields and select a PDF file.");
       return;
     }
+    setUploading(true);
 
     try {
       const token = localStorage.getItem('token');
@@ -122,8 +123,17 @@ const UploadPage = () => {
       console.error("Upload failed:", err);
       alert("Upload failed: " + err.message);
     }
+    finally{
+      setUploading(false);
+    }
   };
-
+ const isFormValid =
+    selectedSem &&
+    selectedBranch &&
+    selectedUploadType &&
+    selectedSubjectCode &&
+    details.trim() &&
+    pdfFile;
   return (
     // FIX: The component now returns Layout as the root element, removing the redundant outer div.
     <div className="h-screen w-screen">
@@ -272,9 +282,36 @@ const UploadPage = () => {
             {/* Upload Button */}
             <button
               onClick={handleFileUpload}
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded shadow transition"
+              disabled={!isFormValid || uploading}
+              className={`w-full flex justify-center items-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded shadow transition ${(!isFormValid || uploading) ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              Upload
+              {uploading ? (
+                <div className="flex items-center space-x-2">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                  <span>Uploading...</span>
+                </div>
+              ) : (
+                "Upload"
+              )}
             </button>
           </div>
         </div>
