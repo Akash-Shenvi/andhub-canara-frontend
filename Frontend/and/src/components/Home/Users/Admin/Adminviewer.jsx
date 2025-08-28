@@ -122,45 +122,7 @@ const AdminMaterialView = () => {
   return (
       <div className="h-screen w-screen">
     <Layout>
-        {showPopup && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="relative bg-white text-black w-[90%] max-w-lg p-6 rounded-2xl shadow-2xl">
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-3 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold"
-              >
-                ×
-              </button>
-              <div className="text-center">
-                <div className="text-4xl mb-3">🔒</div>
-                <h2 className="text-xl font-semibold mb-2 text-gray-800">
-                  Restricted Access
-                </h2>
-                <p className="text-sm text-gray-700 mb-2">
-                  Only <strong>Admins</strong> or <strong>Developers</strong>{" "}
-                  are allowed to manage Users.
-                </p>
-                <p className="text-sm text-gray-700 mb-3">
-                  If you're not authorized, you won't be able to access this
-                  page.
-                </p>
-                <p className="text-xs text-gray-500 italic mb-1">
-                  If you are an Admin or Developer, you can ignore this
-                  message.
-                </p>
-                <p className="text-xs text-gray-500 italic">
-                  Contact:{" "}
-                  <a
-                    href="mailto:andcanara0@gmail.com"
-                    className="text-blue-600 underline"
-                  >
-                    andcanara0@gmail.com
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+        
 
         <div className="">
           <h1 className="text-2xl font-bold text-orange-400 mb-4">Admin Material Viewer</h1>

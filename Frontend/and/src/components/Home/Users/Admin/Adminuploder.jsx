@@ -156,8 +156,9 @@ const UploadPage = () => {
                   Only <strong>Admins</strong> and <strong>Developers</strong> can upload study materials.
                 </p>
                 <p className="text-sm text-gray-700 mb-3">
-                  For access, contact: <a href="mailto:andcanara0@gmail.com" className="text-blue-600 underline">andcanara0@gmail.com</a>
-                </p>
+  For access, contact <a href="mailto:andcanara0@gmail.com" className="text-blue-600 underline">andcanara0@gmail.com</a> or visit <a href="/contact" className="text-blue-600 underline">Contact Us</a> and include "Request Admin Access" in the subject.
+</p>
+
                 <p className="text-xs text-gray-500 italic">
                   If you are a Developer or Admin, you may ignore this message.
                 </p>
