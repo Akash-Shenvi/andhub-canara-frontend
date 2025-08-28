@@ -3,7 +3,7 @@ import axios from "axios";
 
 function ContactUs() {
   const [API_BASE_URL, setApiBaseUrl] = useState("");
-  const[sending, setSending]=useState(false);
+  const [sending, setSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,19 +38,21 @@ function ContactUs() {
       if (response.status === 200) {
         alert("Thank you for your message! We will get back to you soon.");
         setFormData({ name: "", email: "", subject: "", message: "" });
-        
       } else {
         alert("Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error sending message:", error);
       alert("Failed to send your message. Please try again later.");
+    } finally {
+      setSending(false);
     }
-    finally{ setSending(false);}
   };
 
   return (
-    <div className="h-screen w-screen bg-gray-900 overflow-y-auto pt-5">
+    <div className="h-screen w-screen">
+    
+    <div className="min-h-screen w-full bg-gray-900 overflow-y-auto pt-5 px-4 sm:px-6 md:px-0">
       <div className="w-full text-white">
         {/* Header */}
         <header className="text-center mb-12">
@@ -81,7 +83,7 @@ function ContactUs() {
                   <label
                     htmlFor={field.name}
                     className="block text-sm font-medium text-gray-300 mb-2"
-                  >
+                    >
                     {field.label}
                   </label>
                   <input
@@ -91,15 +93,15 @@ function ContactUs() {
                     value={formData[field.name]}
                     onChange={handleChange}
                     required
-                    className="appearance-none w-[450px] max-w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
-                  />
+                    className="appearance-none w-full md:w-[450px] bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                    />
                 </div>
               ))}
               <div>
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium text-gray-300 mb-2"
-                >
+                  >
                   Message
                 </label>
                 <textarea
@@ -109,46 +111,46 @@ function ContactUs() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="appearance-none w-[450px] max-w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
-                ></textarea>
+                  className="appearance-none w-full md:w-[450px] bg-gray-700 border border-gray-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                  ></textarea>
               </div>
               <div>
                 <button
-        type="submit"
-        disabled={sending}
-        className={`w-[450px] max-w-full bg-gradient-to-r from-orange-500 to-yellow-500 
+                  type="submit"
+                  disabled={sending}
+                  className={`w-full md:w-[450px] bg-gradient-to-r from-orange-500 to-yellow-500 
                     text-gray-900 font-bold py-3 px-6 rounded-lg shadow-lg 
                     transition-transform transform hover:scale-105 hover:-translate-y-1 
                     ${sending ? "opacity-50 cursor-not-allowed" : ""}`}
-      >
-        {sending ? (
-          <div className="flex items-center justify-center space-x-2">
-            <svg
-              className="animate-spin h-5 w-5 text-gray-900"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              ></path>
-            </svg>
-            <span>Submitting...</span>
-          </div>
-        ) : (
-          "Submit"
-        )}
-      </button>
+                    >
+                  {sending ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <svg
+                        className="animate-spin h-5 w-5 text-gray-900"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                          ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          ></path>
+                      </svg>
+                      <span>Submitting...</span>
+                    </div>
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
               </div>
             </form>
           </div>
@@ -166,13 +168,13 @@ function ContactUs() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                >
+                  >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
+                    />
                 </svg>
                 <div>
                   <h3 className="font-semibold text-lg">Email Us</h3>
@@ -182,7 +184,7 @@ function ContactUs() {
                   <a
                     href="mailto:andcanara0@gmail.com"
                     className="text-orange-400 hover:underline break-all"
-                  >
+                    >
                     andcanara0@gmail.com
                   </a>
                 </div>
@@ -194,13 +196,13 @@ function ContactUs() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                >
+                  >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+                    />
                 </svg>
                 <div>
                   <h3 className="font-semibold text-lg">Response Time</h3>
@@ -213,8 +215,9 @@ function ContactUs() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
+                    </div>
   );
 }
 
