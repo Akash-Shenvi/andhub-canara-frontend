@@ -72,16 +72,35 @@ function Layout({ children }) {
 
       {/* Footer */}
       <footer className="layout-footer bg-black text-white py-6 text-center w-full border-t border-gray-800">
-        <p className="text-sm md:text-base font-medium text-orange-400">
-          📚 Made by Students, for Students
-        </p>
-        <p className="text-xs md:text-sm text-gray-400 mt-1">
-          &copy; {new Date().getFullYear()} TEAM-AND-HUB — Empowering academic success.
-        </p>
-        <p className="text-xs text-gray-500">
-          Learn • Share • Grow Together 🚀
-        </p>
-      </footer>
+  {/* Tagline */}
+  <p className="text-sm md:text-base font-medium text-orange-400">
+    📚 Made by Students, for Students
+  </p>
+
+  {/* Navigation Links */}
+  <div className="mt-3 flex justify-center space-x-6 pb-4">
+    <a href="/about" className="text-xs md:text-sm text-gray-400 hover:text-orange-400 transition">
+      About
+    </a>
+    <a href="/contact" className="text-xs md:text-sm text-gray-400 hover:text-orange-400 transition">
+      Contact Us
+    </a>
+    <a href="/privacy" className="text-xs md:text-sm text-gray-400 hover:text-orange-400 transition">
+      Privacy Policy
+    </a>
+  </div>
+
+  {/* Copyright */}
+  <p className="text-xs md:text-sm text-gray-400 mt-2">
+    &copy; {new Date().getFullYear()} AND Hub. All rights reserved.
+  </p>
+
+  {/* Extra line */}
+  <p className="text-xs text-gray-500">
+    Learn • Share • Grow Together 🚀
+  </p>
+</footer>
+
 
     </div>
   );

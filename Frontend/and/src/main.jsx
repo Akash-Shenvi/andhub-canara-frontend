@@ -24,6 +24,9 @@ import Aptitude from './components/Home/Placement/Aptitude';
 import Code from './components/Home/Placement/Code';
 import PlacementUploadPage from './components/Home/Users/Admin/PlacementAdminUploder';
 import Checkadmin from './components/Home/Users/Admin/Checkadmin'; // Importing the Checkadmin component
+import Privacy from './components/Privacy'; // Importing the Privacy component
+import Contact from './components/Contact'; // Importing the Contact component
+import About from './components/About'; // Importing the About component
 const rootElement = document.getElementById('root');
 
 // Ensure `rootElement` exists before rendering
@@ -53,6 +56,9 @@ if (rootElement) {
           <Route path='/aptitude' element={<Protected><Aptitude /></Protected>} />
           <Route path='/code' element={<Protected><Code /></Protected>} />
           <Route path='/placement-upload' element={<Checkadmin><PlacementUploadPage /></Checkadmin>} />
+          <Route path='/privacy' element={<Privacy />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/about' element={<About />} />
           {/* Add more routes as needed */}
           <Route path='*' element={<PageNotFound />} />
         </Routes>

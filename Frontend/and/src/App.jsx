@@ -194,10 +194,27 @@ useEffect(() => {
       </section>
 
       <footer className="bg-gray-900 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-500">&copy; {new Date().getFullYear()} AND Platform. All rights reserved.</p>
-        </div>
-      </footer>
+  <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+    {/* Navigation Links */}
+    <div className="mb-4 flex justify-center space-x-6">
+      <a href="/about" className="text-gray-400 hover:text-gray-200 transition">
+        About
+      </a>
+      <a href="/contact" className="text-gray-400 hover:text-gray-200 transition">
+        Contact Us
+      </a>
+      <a href="/privacy" className="text-gray-400 hover:text-gray-200 transition">
+        Privacy Policy
+      </a>
+    </div>
+
+    {/* Copyright */}
+    <p className="text-gray-500">
+      &copy; {new Date().getFullYear()} AND Platform. All rights reserved.
+    </p>
+  </div>
+</footer>
+
     </div>
     </div>
   );

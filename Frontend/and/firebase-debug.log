@@ -1,0 +1,44 @@
+[debug] [2025-08-28T18:56:08.964Z] ----------------------------------------------------------------------
+[debug] [2025-08-28T18:56:08.966Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Akash\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-28T18:56:08.967Z] CLI Version:   14.12.1
+[debug] [2025-08-28T18:56:08.967Z] Platform:      win32
+[debug] [2025-08-28T18:56:08.967Z] Node Version:  v22.16.0
+[debug] [2025-08-28T18:56:08.967Z] Time:          Fri Aug 29 2025 00:26:08 GMT+0530 (India Standard Time)
+[debug] [2025-08-28T18:56:08.968Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-28T18:56:08.970Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-08-28T18:56:09.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-28T18:56:09.204Z] > authorizing via signed-in user (akashshenvi93@gmail.com)
+[debug] [2025-08-28T18:56:09.204Z] [iam] checking project andhub-canara for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-28T18:56:09.205Z] Checked if tokens are valid: false, expires at: 1756296924198
+[debug] [2025-08-28T18:56:09.205Z] Checked if tokens are valid: false, expires at: 1756296924198
+[debug] [2025-08-28T18:56:09.205Z] > refreshing access token with scopes: []
+[debug] [2025-08-28T18:56:09.209Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-28T18:56:09.209Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-28T18:56:09.486Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-28T18:56:09.486Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-28T18:56:09.494Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/andhub-canara:testIamPermissions [none]
+[debug] [2025-08-28T18:56:09.494Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/andhub-canara:testIamPermissions x-goog-quota-user=projects/andhub-canara
+[debug] [2025-08-28T18:56:09.494Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/andhub-canara:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-28T18:56:10.306Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-08-28T18:56:10.306Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-08-28T18:56:11.331Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/andhub-canara:testIamPermissions 200
+[debug] [2025-08-28T18:56:11.332Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/andhub-canara:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-28T18:56:11.332Z] Checked if tokens are valid: true, expires at: 1756410968486
+[debug] [2025-08-28T18:56:11.332Z] Checked if tokens are valid: true, expires at: 1756410968486
+[debug] [2025-08-28T18:56:11.332Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/andhub-canara [none]
+[debug] [2025-08-28T18:56:11.897Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/andhub-canara 200
+[debug] [2025-08-28T18:56:11.898Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/andhub-canara {"projectId":"andhub-canara","projectNumber":"108703536664","displayName":"andhub-canara","name":"projects/andhub-canara","resources":{"hostingSite":"andhub-canara"},"state":"ACTIVE","etag":"1_f5e075ab-9ad1-44f2-a561-65cab1428c91"}
+[info] 
+[info] === Deploying to 'andhub-canara'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-08-28T18:56:11.902Z] Checked if tokens are valid: true, expires at: 1756410968486
+[debug] [2025-08-28T18:56:11.903Z] Checked if tokens are valid: true, expires at: 1756410968486
+[debug] [2025-08-28T18:56:11.903Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/andhub-canara/versions [none]
+[debug] [2025-08-28T18:56:11.903Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/andhub-canara/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-08-28T18:56:13.763Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/andhub-canara/versions 200
+[debug] [2025-08-28T18:56:13.763Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/andhub-canara/versions {"name":"projects/108703536664/sites/andhub-canara/versions/26a734301c84d0ee","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[andhub-canara]: beginning deploy... 
+[info] i  hosting[andhub-canara]: found 7 files in dist 
+[debug] [2025-08-28T18:56:13.776Z] [hosting] uploading with 200 concurrency
